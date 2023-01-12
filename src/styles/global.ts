@@ -29,4 +29,10 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font: 400 1.6rem Roboto, sans-serif;
   }
+
+  .content {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: 0 2.4rem;
+  }
 `
