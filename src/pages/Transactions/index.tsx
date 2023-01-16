@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Header, Summary } from '../../components'
 import { SearchForm } from './components/SearchForm'
 import {
@@ -6,34 +7,57 @@ import {
   TransactionsTable,
 } from './styles'
 
-export const Transactions = () => (
-  <div>
-    <Header />
-    <Summary />
+interface Transaction {
+  id: number
+  description: string
+  type: 'income' | 'outcome'
+  price: number
+  category: string
+  createdAt: string
+}
 
-    <TransactionsContainer className="content">
-      <SearchForm />
+export const Transactions = () => {
+  const [transactions, setTransactions] = useState<Transaction[]>([])
 
-      <TransactionsTable>
-        <tbody>
-          <tr>
-            <td width="50%">Desenvolvimento de site</td>
-            <td>
-              <PriceHighlight variant="income">R$ 12.000,00</PriceHighlight>
-            </td>
-            <td>Venda</td>
-            <td>12/01/2023</td>
-          </tr>
-          <tr>
-            <td>Pizza</td>
-            <td>
-              <PriceHighlight variant="outcome">- R$ 59,00</PriceHighlight>
-            </td>
-            <td>Alimentação</td>
-            <td>10/01/2023</td>
-          </tr>
-        </tbody>
-      </TransactionsTable>
-    </TransactionsContainer>
-  </div>
-)
+  const loadTransaction = async () => {
+    const response = await fetch('http://localhost:3333/transactions')
+    const data = await response.json()
+
+    setTransactions(data)
+  }
+
+  useEffect(() => {
+    loadTransaction()
+  }, [])
+
+  return (
+    <div>
+      <Header />
+      <Summary />
+
+      <TransactionsContainer className="content">
+        <SearchForm />
+
+        <TransactionsTable>
+          <tbody>
+            {transactions.map(
+              ({ id, category, createdAt, description, price, type }) => (
+                <tr key={String(id)}>
+                  <td width="50%">{description}</td>
+                  <td>
+                    <PriceHighlight variant={type}>
+                      {type === 'outcome' && '- '}
+                      {price}
+                    </PriceHighlight>
+                  </td>
+                  <td>{category}</td>
+                  <td>{createdAt}</td>
+                </tr>
+              ),
+            )}
+          </tbody>
+        </TransactionsTable>
+      </TransactionsContainer>
+    </div>
+  )
+}
