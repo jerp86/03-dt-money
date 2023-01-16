@@ -37,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .content {
     width: min(100%, 1120px);
-    margin: 0 auto;
     padding: 0 2.4rem;
   }
 `

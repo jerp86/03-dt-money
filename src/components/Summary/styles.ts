@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
 
 export const SummaryContainer = styled.section`
+  margin: -8rem auto 0;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3.2rem;
-
-  margin-top: -8rem;
 `
 
 interface SummaryCardProps {
