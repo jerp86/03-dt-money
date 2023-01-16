@@ -49,7 +49,7 @@ export const Content = styled(Dialog.Content)`
       background-color: ${(p) => p.theme['green-500']};
       color: ${(p) => p.theme.white};
 
-      &:hover {
+      &:not(:disabled):hover {
         background-color: ${(p) => p.theme['green-700']};
         transition: background-color 0.2s;
       }

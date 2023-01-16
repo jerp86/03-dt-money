@@ -25,6 +25,11 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 
   body, input, textarea, button {
     font: 400 1.6rem Roboto, sans-serif;
