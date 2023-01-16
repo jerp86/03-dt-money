@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Header, Summary } from '../../components'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import { SearchForm } from './components/SearchForm'
 import {
   PriceHighlight,
@@ -28,11 +29,11 @@ export const Transactions = () => {
                   <td>
                     <PriceHighlight variant={type}>
                       {type === 'outcome' && '- '}
-                      {price}
+                      {priceFormatter.format(price)}
                     </PriceHighlight>
                   </td>
                   <td>{category}</td>
-                  <td>{createdAt}</td>
+                  <td>{dateFormatter.format(new Date(createdAt))}</td>
                 </tr>
               ),
             )}
