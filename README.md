@@ -95,35 +95,15 @@ Após logar em sua conta, você deve duplicar o Layout do projeto.
 
 ## :zap: Como executar
 
-Clone o projeto:
+- Clone o projeto: ```git clone https://github.com/jerp86/03-dt-money.git```
+- Acesse a pasta clonada: ```cd 03-dt-money```
+- Instale as dependências: ```npm ci```
+- Inicie a fake API e o projeto: ```npm start```
 
-```
-git clone https://github.com/jerp86/03-dt-money.git
-```
-
-Acesse a pasta clonada:
-
-```
-cd 03-dt-money
-```
-
-Instale as dependências
-
-```
-npm ci
-```
-
-Rode a fake API:
-
-```
-npm run dev:server
-```
-
-Rode o projeto:
-
-```
-npm run dev
-```
+Caso tenha interesse em rodar em terminais separados, você pode utilizar o seguinte:
+| Para iniciar a fake API    | Para iniciar o projeto |
+| -------------------------- | ---------------------- |
+| ``` npm run dev:server ``` | ``` npm run dev ```    |
 
 ## :memo: Licença
 
